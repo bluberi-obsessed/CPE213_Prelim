@@ -37,4 +37,21 @@
     state: started
     enabled: true
 
+- name: Configure fail2ban
+  fail2ban:
+    enabled: true
+    port: http,https
+    bantime: 1h
+    findtime: 5m
+    maxretry: 3
+    protocol: tcp
+
+- name: Configure fail2ban ssh section
+  fail2ban:
+    ssh_enabled: true
+    ssh_port: ssh
+    ssh_filter: sshd
+    ssh_logpath: /var/log/auth.log
+    ssh_maxretry: 6
+  become: true
 
