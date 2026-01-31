@@ -1,0 +1,40 @@
+---
+# tasks file for roles/protector
+
+# APACHE
+
+- name: Install Apache
+  apt:
+    name: apache2
+    update_cache: yes
+    state: latest 
+
+- name: Copy Apache Configuration file
+  copy:
+    src: /data/httpd.orignal 
+    dest: /etc/httpd/conf/httpd.conf
+
+- name: Copy index.html
+  copy:
+    src: /data/index.html
+    dest: /var/ww/html
+
+- name: Restart Apache2
+  service:
+    name: apache2
+    state: restarted
+
+# FAIL2BAN
+
+- name: Install Fail2ban
+  apt:
+    name: fail2ban
+    state: present
+
+- name: Start and Enable Fail2Ban
+  service:
+    name: fail2ban
+    state: started
+    enabled: true
+
+

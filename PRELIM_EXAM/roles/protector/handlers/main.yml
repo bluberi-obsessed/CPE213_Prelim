@@ -1,0 +1,14 @@
+---
+# handlers file for roles/protector
+
+- name: Restart Apache2
+  service:
+    name: apache2
+    state: restarted
+
+
+- name: Restart Fail2Ban
+  service:
+    name: fail2ban
+    state: restarted
+

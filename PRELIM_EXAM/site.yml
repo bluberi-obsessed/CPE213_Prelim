@@ -1,0 +1,7 @@
+---
+
+- name: Protect Against Directory Bursting Attacks
+  hosts: web_servers
+  become: yes
+  roles:
+    - protector

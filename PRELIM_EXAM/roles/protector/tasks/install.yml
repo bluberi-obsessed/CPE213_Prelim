@@ -1,0 +1,18 @@
+--- 
+
+- name: Install Apache
+  apt:
+    name: apache2
+    update_cache: yes
+    state: latest 
+
+- name: Install Fail2Ban
+  apt:
+    name: Fail2Ban
+    state: present
+
+- name: Start and Enable Fail2Ban
+  service:
+    name: fail2ban
+    state: started
+    enabled: true
