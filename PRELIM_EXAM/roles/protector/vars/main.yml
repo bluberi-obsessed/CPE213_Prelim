@@ -1,3 +1,16 @@
 ---
 # vars file for roles/protector
 
+html_file_path: /var/www/html/index.html
+html_content: |
+  <!DOCTYPE html>
+    <html>s
+      <head>
+        <title>WELCOME TO MY PRELIM PAGE</title>
+      </head>
+
+      <body>
+        <h1>Hazel Aillson T. Manuel | CPE32S3</h1>
+        <p>This page is just for testing</p>
+      </body>
+    </html>

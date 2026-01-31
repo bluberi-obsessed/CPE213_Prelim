@@ -9,21 +9,18 @@
     update_cache: yes
     state: latest 
 
-- name: Copy Apache Configuration file
-  copy:
-    src: /data/httpd.orignal 
-    dest: /etc/httpd/conf/httpd.conf
-
-- name: Copy index.html
-  copy:
-    src: /data/index.html
-    dest: /var/ww/html
-
-- name: Restart Apache2
-  service:
+- name: Start and Enable Apache service
+  service: 
     name: apache2
-    state: restarted
+    state: started
+    enabled: yes
 
+- name: Deploy custom HTML page
+  copy:
+    content: "{{ html_content }}"
+    dest: " {{ html_file_path }}"
+  notify: Restart Apache
+  
 # FAIL2BAN
 
 - name: Install Fail2ban
